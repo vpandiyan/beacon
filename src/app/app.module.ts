@@ -3,9 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IBeacon } from '@ionic-native/ibeacon';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { BeaconProvider } from '../providers/beacon/beacon';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { HomePage } from '../pages/home/home';
   ],
   providers: [
     StatusBar,
+    IBeacon,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BeaconProvider
   ]
 })
 export class AppModule {}

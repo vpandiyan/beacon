@@ -1,14 +1,65 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      My Beacons
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <!-- <ion-list no-lines>
+
+    <ion-item *ngFor="let beacon of beacons">
+      <ion-grid>
+        <ion-row>
+          <ion-col>Major</ion-col>
+          <ion-col>{{beacon.major}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Minor</ion-col>
+          <ion-col>{{beacon.minor}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Proximity</ion-col>
+          <ion-col>{{beacon.proximity}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>RSSI</ion-col>
+          <ion-col>{{beacon.rssi}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+  </ion-list> -->
+
+  <!-- <ion-list no-lines>
+
+    <ion-item *ngIf="beacon">
+      <ion-grid>
+        <ion-row>
+          <ion-col>Name</ion-col>
+          <ion-col>{{beacon.name}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>RSSI</ion-col>
+          <ion-col>{{beacon.rssi}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <a [href]="beacon.url" >Go</a>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+  </ion-list> -->
+  <!-- <ion-card>
+    <ion-card-header>Scan Now</ion-card-header>
+    <ion-content>
+      <button ion-button clear block (click)="startScan()">Start</button>
+    </ion-content>
+  </ion-card> -->
+  <iframe [src]="url" [width]="width" [height]="height" allowfullscreen="true" webkitallowfullscreen="true"
+    mozallowfullscreen="true" frameborder="0" *ngIf="!isOutofRange"></iframe>
+  <ion-card *ngIf="isOutofRange" padding>
+    <ion-item padding>You're not in office</ion-item>
+  </ion-card>
 </ion-content>
