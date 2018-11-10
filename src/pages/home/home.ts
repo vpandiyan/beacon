@@ -65,7 +65,7 @@ export class HomePage {
     // required for UI update
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.dataList = [{
-      id: "2796",
+      id: 2796,
       url: "http://www.piqotech.com"
     }];
     this.width = window.screen.width;
@@ -131,6 +131,8 @@ export class HomePage {
   listenToBeaconEvents() {
     this.events.subscribe('didRangeBeaconsInRegion', (data) => {
 
+      console.log("Beacon Data:::"+JSON.stringify(data));
+
       // update the UI with the beacon list
       this.zone.run(() => {
 
@@ -155,9 +157,9 @@ export class HomePage {
   }
 
   getLocation() {
-    this.beaconList.forEach((beacon) => {
+    this.beacons.forEach((beacon) => {
       this.dataList.forEach(data => {
-        if (data.id == beacon.major && data.id != this.selectedId) {
+        if (data.id === beacon.major && data.id !== this.selectedId) {
           this.selectedId = data.id;
           this.url = this.sanitizer.bypassSecurityTrustResourceUrl(data.url);
         }
